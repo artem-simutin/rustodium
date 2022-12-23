@@ -2,7 +2,11 @@
 name = "rustodium"
 version = "0.1.0"
 edition = "2021"
+author = "statik-coder <trystatik@icloud.com>"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+dotenv = "0.15.0"
+serenity = "0.11.5"
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
