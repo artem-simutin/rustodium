@@ -1,3 +1,5 @@
+pub mod config;
+
 use dotenv::dotenv;
 
 // Loads environment variables from .env file

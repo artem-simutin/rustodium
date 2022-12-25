@@ -1,21 +1,24 @@
-use serenity::prelude::GatewayIntents;
 use std::env;
+
+use serenity::prelude::GatewayIntents;
+
 pub struct Config {
+    pub token: String,
     pub prefix: String,
     pub intents: GatewayIntents,
-    pub token: String,
 }
 
 impl Config {
     pub fn new() -> Config {
-        let token = env::var("BOT_TOKEN").expect("Token must be specified to use this application");
         Config {
-            prefix: "~".to_string(),
-            token,
-            intents: GatewayIntents::GUILD_MESSAGES
+            token: env::var("DISCORD_TOKEN").expect("Discrod token must be in environment"),
+            prefix: ">>".to_string(),
+            intents: GatewayIntents::non_privileged()
+                | GatewayIntents::GUILDS
+                | GatewayIntents::GUILD_MESSAGES
                 | GatewayIntents::GUILD_VOICE_STATES
-                | GatewayIntents::DIRECT_MESSAGES
-                | GatewayIntents::GUILDS,
+                | GatewayIntents::MESSAGE_CONTENT
+                | GatewayIntents::DIRECT_MESSAGES,
         }
     }
 }
